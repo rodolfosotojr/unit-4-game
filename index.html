@@ -16,7 +16,7 @@
 
     <h1 class="title">CrystalsCollector</h1>
 
-    <section class="container">
+    <section class="instructions">
         <p>You will be given a random number at the start of the game.</p>
         <br>
         <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your
@@ -32,15 +32,17 @@
         <p>Each time the game starts, the game wil change the values of each crystal.</p>
 
     </section>
+    <div class="container">
+        <section class="randomNumber">
+            <p id="number">555</p>
+        </section>
 
-    <section class="randomNumber">
-        <p id="number">555</p>
-    </section>
-    
-    <section class="winsLosses">
-        <p id="wins-text">Wins = </p>
-        <p id="losses-test">Losses =</p>
-    </section>
+        <section class="winsLosses">
+            <p id="wins-text">Wins = </p>
+            <br>
+            <p id="losses-test">Losses =</p>
+        </section>
+    </div>
 
     <div class="jewels">
         <img src="" class="img-ruby" alt="Ruby Crystal">
@@ -51,7 +53,7 @@
 
     <div class="totalScore">
         <p id="scoreSection">Your total score is:</p>
-        <p id="score"></p>
+        <p id="score">0</p>
     </div>
 
 </body>
