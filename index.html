@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
-    <script src="./assets/javascript/game.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Patua+One" rel="stylesheet">
     
@@ -36,64 +36,153 @@
     </section>
     <div class="container">
         <section class="randomNumber">
-            <p id="number"></p>
+            <p id="targetScore">55</p>
         </section>
 
         <section class="winsLosses">
-            <p id="wins-text">Wins = </p>
+            <p id="wins-text">Wins = 0 </p>
             <br>
-            <p id="losses-test">Losses =</p>
+            <p id="losses-text">Losses = 0</p>
         </section>
     </div>
 
     <div class="jewels">
-        <input type="image" id="img-ruby" src="./assets/images/ruby.jpg" alt="Ruby" width="48" height="48">
-        <input type="image" id="img-topaz" src="." alt="Topaz" width="48" height="48">
-        <input type="image" id="img-amber" src="." alt="Amber" width="48" height="48">
-        <input type="image" id="img-emerald" src="." alt="Emerald" width="48" height="48">
+        <input type="image" id="ruby" src="./assets/images/ruby.jpg" alt="Ruby" width="48" height="48">
+        <input type="image" id="topaz" src="." alt="Topaz" width="48" height="48">
+        <input type="image" id="amber" src="." alt="Amber" width="48" height="48">
+        <input type="image" id="emerald" src="." alt="Emerald" width="48" height="48">
     </div>
 
     <div class="totalScore">
-        <p id="scoreSection">Your total score is:</p>
+        <p Score Section id="scoreSection">Your Current Score:</p>
         <p id="score">0</p>
     </div>
 
-    <script type="text/javascript">
+<script>
     $(document).ready(function() {
-//Create the random number
+
+var crystal = {
+    topaz:
+    {
+        name: "topaz",
+        value: 0
+    },
+    emerald:
+    {
+        name: "emerald",
+        value: 0
+    },
+    ruby:
+    {
+        name: "ruby",
+        value: 0
+    },
+    amber:
+    {
+        name: "amber",
+        value: 0
+    }
+};
+
+//Create the variable for the current score and the target score
+
+var currentScore = 0;
+var targetScore = 0;
+var winCount = 0;
+var lossCount = 0;
+
+//Create the random number function
 
 var getRandomValue = function(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+return Math.floor(Math.random() * (max - min + 1)) + min;
 
-}
-var targetScore = getRandomValue(19,120);
-    console.log("target score " + targetScore);
+};
 
-var crystalValue = getRandomValue(1,12);
-    console.log(crystalValue);
+var gameStart = function() {
+
+currentScore = 0;
+
+//Create the random value and assign the random value to the targetScore
+targetScore = getRandomValue(19,120);
+
+//Create the random values for each crystal
+crystal.topaz.value = getRandomValue(1,12);
+crystal.emerald.value = getRandomValue(1,12);
+crystal.ruby.value = getRandomValue(1,12);
+crystal.amber.value = getRandomValue(1,12);
+
+$("#score").text(currentScore);
+$("#targetScore").text("Target Number: " + targetScore);
+
+console.log(crystal.topaz.value);
+console.log(crystal.emerald.value);
+console.log(crystal.ruby.value);
+console.log(crystal.amber.value);
+console.log(targetScore);
+
+
+//Console.log will not run until gameStart function is called, which it hasn't up to this point
+};
+
+var checkWin = function() {
+    if (currentScore > targetScore) {
+        alert("Sorry. You Lost!");
+        console.log("You Lost");
+
+        lossCount++;
+        $("#losses-text").text("Losses = " + lossCount);
+
+        //restart game
+        gameStart();
+    }
     
-})
+    else if (currentScore === targetScore) {
+        alert("You Win!");
+        console.log("You Win!");
 
-//Add code to start game funciton
+        winCount++;
 
+        $("#wins-text").text("Wins = " + winCount);
 
-// var targetScore = 0;
+        //restart game
+        gameStart();
+    }
+};
 
-//Give crystals a random value  between 1-12
-$("#img-ruby").on("click", function() {
-    crystalValue = "";
+var addValues = function(crystal) {
 
+    currentScore += crystal.value;
 
-    $("#img-ruby").append("#score") + crystalValue;
+    $("#score").text(currentScore);
 
-})
+    checkWin();
+}
 
+gameStart();
 
+$("#topaz").click(function() {
+    addValues(crystal.topaz);
+});
 
+$("#emerald").click(function() {
+    addValues(crystal.emerald);
+});
 
-    </script>
+$("#ruby").click(function() {
+    addValues(crystal.ruby);
+});
+
+$("#amber").click(function() {
+    addValues(crystal.amber);
+});
+
+});
+
+</script>
 
 </body>
+
+<!-- <script src="./assets/javascript/game.js"></script> -->
 
 </html>
 

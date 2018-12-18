@@ -1,3 +1,23 @@
+
+
+// console.log("topaz value" + crystal.topaz.value);
+//Add code to start game funciton
+
+
+// var targetScore = 0;
+
+// //Give crystals a random value  between 1-12
+// $("#img-ruby").on("click", function() {
+//     var ruby = crystalValue;
+
+
+//     $("#img-ruby").append("#score") + ruby;
+
+// })
+
+
+
+
 // $(document).ready(function() {
 // //Create the random number
 
