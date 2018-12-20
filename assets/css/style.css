@@ -28,12 +28,13 @@ body {
 #targetScore {
     float: left;
     width: 300px;
-    height: 100px;
+    height: 60px;
     padding: 15px;
     font-size: 30px;
     background-color: deepskyblue;
     border-right: 10px;
     color: white;
+    margin-bottom: 10px;
 }
 
 .winsLosses {
@@ -41,7 +42,7 @@ body {
     background-color: navy;
     color: white;
     width: 100px;
-    height: 100px;  
+    height: 60px;  
     float: left;
     padding: 15px;
     margin-left: 10px;
@@ -50,13 +51,12 @@ body {
 
 .jewels {
     clear: both;
+    margin-top: 10px;
+    padding: 15px;
+    width: 300px;
     margin-bottom: 10px;
+    background-color: white;
 }
-
-/* #img-ruby {
-    height: 75px;
-    width: 75px;
-} */
 
 #scoreSection {
     margin-bottom: 10px;
@@ -72,5 +72,5 @@ body {
     padding: 15px;
     color: white;
     font-size: 30px;
-    height: 100px;
+    height: 60px;
 }
